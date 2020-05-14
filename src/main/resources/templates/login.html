@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Login</title>
+    <!--===== Required meta tags =====-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--===== Bootstrap CSS =====-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="navbar :: navbar"></div>
+<div class="container mr-auto mt-5">
+    <div class="jumbotron text-center">
+        <div th:if="${param.error}" class="alert alert-danger mt-3 text-center" role="alert">
+            Invalid username or password
+        </div>
+        <h1 th:unless="${param.error}" class="display-6 mr-auto">Login page</h1>
+    </div>
+    <div th:if="${param.logout}">
+        <p class="text-primary">You have been logged out </p>
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> User Name : </label>
+            <div class="col-sm-5">
+                <input class="form-control" placeholder="User name" type="text" name="username"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Password: </label>
+            <div class="col-sm-5">
+                <input class="form-control" placeholder="Password" type="password" name="password"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" value="SIGN IN">
+            SIGN IN
+        </button>
+    </form>
+</div>
+<!--===== Optional JavaScript =====-->
+<!--===== jQuery first, then Popper.js, then Bootstrap JS =====-->
+<div th:insert="bootstrap :: bootstrap"></div>
+</body>
+</html>

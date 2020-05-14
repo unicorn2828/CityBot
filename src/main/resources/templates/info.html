@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Info</title>
+    <!--===== Required meta tags =====-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--===== Bootstrap CSS =====-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="navbar :: navbar"></div>
+<div class="container mr-auto mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">City bot</h1>
+        <p class="lead">This is a simple web application based on the spring framework to demonstrate and attract additional attention</p>
+        <hr class="my-4">
+        <p>@ Vitaly Kononov</p>
+    </div>
+</div>
+<!--===== Optional JavaScript =====-->
+<!--===== jQuery first, then Popper.js, then Bootstrap JS =====-->
+<div th:insert="bootstrap :: bootstrap"></div>
+</body>
+</html>

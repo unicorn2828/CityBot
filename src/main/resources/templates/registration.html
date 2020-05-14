@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Registration</title>
+    <!--===== Required meta tags =====-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--===== Bootstrap CSS =====-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="navbar :: navbar"></div>
+<div class="container mr-auto mt-5">
+    <div class="jumbotron text-center" >
+        <h1 class="display-6 mr-auto">Registration page</h1>
+    </div>
+    <div th:if="${message}">
+        <p th:text="${message}"/>
+    </div>
+    <form th:action="@{/registration}" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> User Name : </label>
+            <div class="col-sm-5">
+                <input class="form-control" placeholder="User name" type="text" name="username"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Password: </label>
+            <div class="col-sm-5">
+                <input class="form-control" placeholder="Password" type="password" name="password"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Email: </label>
+            <div class="col-sm-5">
+                <input class="form-control" placeholder="some@email.com" type="email" name="email"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" value="REGISTRATION">
+            SUBMIT
+        </button>
+    </form>
+</div>
+<!--===== Optional JavaScript =====-->
+<!--===== jQuery first, then Popper.js, then Bootstrap JS =====-->
+<div th:insert="bootstrap :: bootstrap"></div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Bot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--===== Required meta tags =====-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--===== Bootstrap CSS =====-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="navbar :: navbar"></div>
+<div class="container mr-auto mt-5">
+    <h3>add new city</h3>
+    <p>
+    <form th:action="@{/controller}" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> city name: </label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="name" placeholder="Input city name"/>
+                <div th:if="${name}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${name}]]
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> city description: </label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="info" placeholder="Input city info"/>
+                <div th:if="${info}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${info}]]
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" value="add">
+            add
+        </button>
+    </form>
+</div>
+<div class="container mr-auto mt-5">
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        update city >>
+    </a>
+</p>
+
+<div class="collapse" id="collapseExample">
+
+    <h3>update city</h3>
+    <form th:action="@{/controller}" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> city name: </label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="name" placeholder="Input text"/>
+                <div th:if="${name}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${name}]]
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> city description: </label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="info" placeholder="Input text"/>
+                <div th:if="${info}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${info}]]
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" value="update">
+            update
+        </button>
+    </form>
+</div>
+</div>
+<!--===== Optional JavaScript =====-->
+<!--===== jQuery first, then Popper.js, then Bootstrap JS =====-->
+<div th:insert="bootstrap :: bootstrap"></div>
+</body>
+</html>

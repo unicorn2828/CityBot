@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--===== Required meta tags =====-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--===== Bootstrap CSS =====-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">
+            <img th:src="@{/images/logo.png}" width="30" height="30"
+                 class="d-inline-block align-top" alt="">
+            CityBot</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/info">Information <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Registration <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+                <tr th:switch="${#httpServletRequest.remoteUser}? 'first' : 'even'">
+                    <p th:case="first">
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-inline-block">user: [[${#httpServletRequest.remoteUser}]]</a>
+                        <a class="nav-link d-inline-block" href="/logout">
+                            Sing out <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    </p>
+                    <p th:case="even">
+                    <li class="nav-item">
+                        <a class="nav-link text-white d-inline-block">
+                            <img th:src="@{/images/default_avatar.png}" width="20"
+                                 height="20">
+                        </a>
+                        <a class="nav-link d-inline-block" href="/login"> Sign
+                            in <span class="sr-only">(current)</span></a>
+                    </li>
+                    </p>
+                </tr>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--===== Optional JavaScript =====-->
+<!--===== jQuery first, then Popper.js, then Bootstrap JS =====-->
+<div th:insert="bootstrap :: bootstrap"></div>
+</body>
+</html>
