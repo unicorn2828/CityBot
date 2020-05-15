@@ -44,6 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .loginPage(LOGIN_PAGE)
             .permitAll()
             .and()
+            .rememberMe()
+            .and()
             .logout()
             .logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_PAGE))
             .invalidateHttpSession(true)
