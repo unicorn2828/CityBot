@@ -13,7 +13,7 @@
 <body>
 <div th:insert="navbar :: navbar"></div>
 <div class="container mr-auto mt-5">
-    <div class="jumbotron text-center" >
+    <div class="jumbotron text-center">
         <h1 class="display-6 mr-auto">Registration page</h1>
     </div>
     <div th:if="${message}">
@@ -24,18 +24,27 @@
             <label class="col-sm-2 col-form-label"> User Name : </label>
             <div class="col-sm-5">
                 <input class="form-control" placeholder="User name" type="text" name="username"/>
+                <div th:if="${username}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${username}]]
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> Password: </label>
             <div class="col-sm-5">
                 <input class="form-control" placeholder="Password" type="password" name="password"/>
+                <div th:if="${password}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${password}]]
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> Email: </label>
             <div class="col-sm-5">
                 <input class="form-control" placeholder="some@email.com" type="email" name="email"/>
+                <div th:if="${email}" class="alert alert-danger mt-1 text-center" role="alert">
+                    [[${email}]]
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary" value="REGISTRATION">
