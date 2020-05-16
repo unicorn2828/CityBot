@@ -30,13 +30,21 @@ public class RegistrationController{
 
     @PostMapping
     public String addUser(User currentUser, Model model){
-        String userName = currentUser.getUsername();
-        String userPassword = customEncoder.receivePasswordEncoder()
-                                           .encode(currentUser.getPassword());
-        user.setEmail(currentUser.getEmail());
-        String page = commandProvider.defineCommand(REGISTRATION)
-                                     .execute(userName, userPassword);
-        if (page.equals(REGISTRATION)) {
+        String page;
+        String userName = null;
+        if (bindingResult.hasErrors()) {
+            Map<String, String> error = ControllerUtil.getError(bindingResult);
+            model.mergeAttributes(error);
+            page = REGISTRATION;
+        } else {
+            userName = currentUser.getUsername();
+            String userPassword = customEncoder.receivePasswordEncoder()
+                                               .encode(currentUser.getPassword());
+            mainUser.setEmail(currentUser.getEmail());
+            page = commandProvider.defineCommand(REGISTRATION)
+                                  .execute(userName, userPassword);
+        }
+        if (page.equals(REGISTRATION) && userName != null) {
             model.addAttribute(ATTRIBUTE_MESSAGE, userName + MESSAGE_TEXT);
         }
         return page;
