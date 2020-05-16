@@ -10,11 +10,20 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User{
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @NotBlank(message = "Username can't be empty")
+    @Length(max = 45, message = "incorrect length of username - max 45 letters")
     private String username;
+
+    @NotBlank(message = "Password can't be empty")
+    @Length(max = 45, message = "incorrect length of password - max 45 letters")
     private String password;
+
+    @NotBlank(message = "Email can't be empty")
+    @Email(message = "Email isn't correct")
     private String email;
     private boolean active;
 
