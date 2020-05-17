@@ -18,10 +18,13 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public void addCity(String name, String info){
-        city.setId(DEFAULT_CITY_ID);
-        city.setName(name);
-        city.setInfo(info);
-        cityRepository.save(city);
+        Optional<City> currentCity = cityRepository.findByName(name);
+        if (!currentCity.isPresent()) {
+            city.setId(DEFAULT_CITY_ID);
+            city.setName(name);
+            city.setInfo(info);
+            cityRepository.save(city);
+        }
     }
 
     @Override
