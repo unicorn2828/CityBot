@@ -32,12 +32,15 @@ public class MainController{
 
     @PostMapping
     String doCity(@RequestParam Map<String, String> allParams, @Valid City city, BindingResult bindingResult, Model model){
-        String command = allParams.get(PARAM_COMMAND);
-        if (bindingResult.hasErrors()) {
+        boolean isBindingResultHasErrors = bindingResult.hasErrors();
+        boolean isAuthorized = SecurityContextHolder.getContext()
+                                                    .getAuthentication()
+                                                    .isAuthenticated();
+        if (isBindingResultHasErrors) {
             Map<String, String> error = ControllerUtil.getError(bindingResult);
             model.mergeAttributes(error);
-            command = DEFAULT;
         }
+        String command = isAuthorized && !isBindingResultHasErrors ? allParams.get(PARAM_COMMAND) : DEFAULT;
         String page = commandProvider.defineCommand(command)
                                      .execute(allParams.get(PARAM_NAME), allParams.get(PARAM_INFO));
         return page;
